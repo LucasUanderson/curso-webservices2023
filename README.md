@@ -1,6 +1,11 @@
-# Curso Webservices API's REST e RESTful
 
-Especializar no desenvolvimento de API's com a mais nova versão do Spring Boot (Spring Boot 3) 
+
+# Sobre este curso 🧑‍💻
+
+Curso Webservices API's REST e RESTful especialização no desenvolvimento de API's com a mais nova versão do Spring Boot (Spring Boot 3) atualizado para Java 18.
+
+- Duração de  40 horas no total.
+- Aulas: 438 
 
 - Spring Boot 3;
 
