@@ -98,6 +98,12 @@
 				<version>${dozer.version}</version>
 			</dependency>
 
+		<dependency>
+			<groupId>com.github.ferstl</groupId>
+			<artifactId>depgraph-maven-plugin</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+
 			<!--OPENIAPI-->
 			<dependency>
 				<groupId>org.springdoc</groupId>
@@ -114,6 +120,7 @@
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
