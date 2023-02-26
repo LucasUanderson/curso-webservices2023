@@ -3,7 +3,7 @@ server:
 cors:
   originPatterns: http://localhost:8080,http://localhost:3000,https://erudio.com.br
 file:
-  upload-dir: /home/runner/work/curso-webservices2023/curso-webservices2023/UploadDir
+  upload-dir: /home/runner/work/curso-webservices2023/UploadDir
 spring:
   datasource:
     drive-class-name: com.mysql.cj.jdbc.Driver
