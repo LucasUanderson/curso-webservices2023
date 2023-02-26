@@ -1,10 +1,12 @@
 package br.com.erudio.exceptions;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
 public class ExceptionResponse implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	private Date timestamp;
