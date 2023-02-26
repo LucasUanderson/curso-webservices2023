@@ -8,9 +8,13 @@ import br.com.erudio.model.Person;
 import br.com.erudio.repository.PersonRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -23,15 +27,44 @@ public class PersonServices {
 
 	@Autowired
 	PersonRepository repository;
+	@Autowired
+	PagedResourcesAssembler<PersonVO> assembler;
+
 	
-	
-	public List<PersonVO> findAll() {
+	public PagedModel<EntityModel<PersonVO>> findAll(Pageable pageable) {
 		
 		logger.info("Finding all book");
-		var persons =  DozerMapper.parseListObjects(repository.findAll(), PersonVO.class);
-		persons.stream()
-		.forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
-		return persons;
+
+		var personPage = repository.findAll(pageable);
+
+		var personVosPage = personPage.map( p -> DozerMapper.parseObject(p, PersonVO.class));
+
+		personVosPage.map(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
+
+		Link link = linkTo(methodOn(PersonController.class).findAll(
+				pageable.getPageNumber(),
+				pageable.getPageSize(),
+				"asc")).withSelfRel();
+
+		return assembler.toModel(personVosPage,link);
+	}
+
+	public PagedModel<EntityModel<PersonVO>> findPersonByName(String firstname, Pageable pageable) {
+
+		logger.info("Finding all book");
+
+		var personPage = repository.findPersonByName(firstname, pageable);
+
+		var personVosPage = personPage.map( p -> DozerMapper.parseObject(p, PersonVO.class));
+
+		personVosPage.map(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
+
+		Link link = linkTo(methodOn(PersonController.class).findAll(
+				pageable.getPageNumber(),
+				pageable.getPageSize(),
+				"asc")).withSelfRel();
+
+		return assembler.toModel(personVosPage,link);
 	}
 
 	
@@ -89,5 +122,6 @@ public class PersonServices {
 				.orElseThrow(() -> new ResourceNotFoundException(" No records found for this ID!!"));
 		repository.delete(entity);
 	}
+
 
 }
