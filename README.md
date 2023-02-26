@@ -1,5 +1,7 @@
 
 
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/lucasuanderson/rest-java-spring-boot.svg)](https://hub.docker.com/repository/docker/lucasuanderson/rest-java-spring-boot)
+
 # Sobre este curso 🧑‍💻
 
 Curso Webservices API's REST e RESTful especialização no desenvolvimento de API's com a mais nova versão do Spring Boot (Spring Boot 3) atualizado para Java 18.
