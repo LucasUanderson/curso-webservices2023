@@ -98,13 +98,15 @@
 				<version>${dozer.version}</version>
 			</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.github.ferstl/depgraph-maven-plugin -->
 		<dependency>
 			<groupId>com.github.ferstl</groupId>
 			<artifactId>depgraph-maven-plugin</artifactId>
-			<version>4.0.1</version>
+			<version>4.0.2</version>
 		</dependency>
 
-			<!--OPENIAPI-->
+
+		<!--OPENIAPI-->
 			<dependency>
 				<groupId>org.springdoc</groupId>
 				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
